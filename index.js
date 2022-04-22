@@ -1,10 +1,17 @@
 const fs = require('fs')
 const inquirer = require('inquirer')
 
-inquirer.prompt ([
+// licenses
+const apache = "Licensed under the [Apache License](https://spdx.org/licenses/Apache-2.0.html).";
+const gnu    = "Licensed under the [GNU GPLv3 License](https://spdx.org/licenses/GPL-3.0-or-later.html).";
+const mit    = "Licensed under the [MIT License](https://spdx.org/licenses/MIT.html).";
+const isc    = "Licensed under the [ISC License](https://spdx.org/licenses/ISC.html).";
+
+
+inquirer.prompt  ([
     {
         type: "input",
-        name: "Title",
+        name: "title",
         message: "What's your program title?",
     }, 
     {
@@ -53,29 +60,52 @@ inquirer.prompt ([
     },   
     {
         type: "input",
-        name: "creditsSection",
+        name: "collaborators",
         message: "Do you have collaborators or links to other's Github profile?",
     }, 
+    // {
+    //     type: "input",
+    //     name: "GithubURL",
+    //     message: "What is your Github username?"
+    // }, 
+    {
+        type: "list",
+        name: "License",
+        message: "What type of license would you like?",
+        choices: [
+            "Apache License 2.0",
+            "GNU GPLv3",
+            "MIT",
+            "ISC",
+            "None"
+        ]
+    },
     {
         type: "input",
-        name: "GithubURL",
-        message: "Link to your Github Portfolio:"
-    }, 
-]) .then((answers) => {
+        name: "userName",
+        message: "What is your Github username?"
+    },
+    {
+        type: "input",
+        name: "email",
+        message: "What is your email address?"
+    },
+])
+ .then((answers) => {
     console.log(answers)
-    const filename = `ReadMe.md`;
+    const filename = `README.md`;
 
-    const {Title, motivation, rationale, solution, learn, installStep1, installStep2, installStep3, installStep4, usage, creditsSection, GithubURL} = answers;
+    const {title, motivation, rationale, solution, learn, installStep1, installStep2, installStep3, installStep4, usage, collaborators, License, userName, email} = answers;
 
-    fs.writeFile(filename, generateHTML(Title, motivation, rationale, solution, learn, installStep1, installStep2, installStep3, installStep4, usage, creditsSection, GithubURL), (err) => {
+    fs.writeFile(filename, generateHTML(title, motivation, rationale, solution, learn, installStep1, installStep2, installStep3, installStep4, usage, collaborators, License, userName, email), (err) => {
         err ? console.log("ERROR!") : console.log("SUCCESS!")
         }
     );
 })
 
-const generateHTML = (Title, motivation, rationale, solution, learn, installStep1, installStep2, installStep3, installStep4, usage, creditsSection, GithubURL) => {
+const generateHTML = (title, motivation, rationale, solution, learn, installStep1, installStep2, installStep3, installStep4, usage, collaborators, License, userName, email) => {
     let content = 
-    `# ${Title}
+    `# ${title}
     
     ## Description
     ${motivation}
@@ -84,10 +114,10 @@ const generateHTML = (Title, motivation, rationale, solution, learn, installStep
     ${learn}
 
     ## Table of Contents
-    - [Installation](#installation)
-    - [Usage](#usage)
-    - [Credits](#credits)
-    - [License](#license)
+    - [Installation] (#Installation)
+    - [Usage](#Usage)
+    - [Credits](#Credits)
+    - [License](#License)
 
     ## Installation
     ${installStep1}
@@ -99,16 +129,14 @@ const generateHTML = (Title, motivation, rationale, solution, learn, installStep
     ${usage}
 
     ## Credits
-    ${GithubURL}
+    ${collaborators}
 
     ## License
-    Copyright <2022> <Eric Taylor>
+    ${License}
 
-    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+    ##Questions
+    ${userName}
+    I will use your email: ${email} to follow up with additional questions that you may have.
     `;
 return content;
 }
