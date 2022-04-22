@@ -5,6 +5,8 @@
     I built this project for an assignment in UW Coding Bootcamp to help us use npm's and Node.js
     Creating a simplified ReadMe file for every homework assignment. This file will help generate a more substantive ReadMe file for every assignment.
     I learned how to call npm's and use their packages to help generate a more robust javascript file. 
+    
+    I had some challenges in getting the hyperlinks to show up. I went to the Github docs page and the code that I provided on lines 12-15 are correct but not sure why they aren't showing up. Also, I wasn't able to figure out the badge at the top of the page. Overall I am happy that I learned how to use Node.js while implenting npm's. I think this will help serve me in the future. If I have time this weekend, I will continue to work on getting the hyperlinks to become operational and add a badge at the top of the screen. 
 
     ## Table of Contents
     - [Installation] (#Installation)
