@@ -19,7 +19,7 @@
     Fill out all of the prompts that you choose to. When the console displays "Success!" your ReadMe is generated. To view your ReadMe, open the "README.md" file
 
     ## Usage
-    See above
+    Here is the link to the video file for my ReadMe file generator: https://drive.google.com/file/d/1utMrNDnmKbT56H6PDeWF-7Y2rfpD6vrq/view?usp=sharing
 
     ## Credits
     N/A
