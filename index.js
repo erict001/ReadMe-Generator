@@ -114,10 +114,10 @@ const generateHTML = (title, motivation, rationale, solution, learn, installStep
     ${learn}
 
     ## Table of Contents
-    - [Installation] (#Installation)
-    - [Usage](#Usage)
-    - [Credits](#Credits)
-    - [License](#License)
+    * [Installation] (#Installation)
+    * [Usage](#Usage)
+    * [Credits](#Credits)
+    * [License](#License)
 
     ## Installation
     ${installStep1}
