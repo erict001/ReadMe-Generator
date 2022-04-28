@@ -135,8 +135,8 @@ const generateHTML = (title, motivation, rationale, solution, learn, installStep
     ${License}
 
     ##Questions
-    ${userName}
-    I will use your email: ${email} to follow up with additional questions that you may have.
+    If you want to checkout my work, visit my <a href="https://github.com/${userName}>Github</a>.
+    I will use your email: <a href="mailto:${email}">${email}</a> to follow up with additional questions that you may have.
     `;
 return content;
 }
