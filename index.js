@@ -104,39 +104,41 @@ inquirer.prompt  ([
 })
 
 const generateHTML = (title, motivation, rationale, solution, learn, installStep1, installStep2, installStep3, installStep4, usage, collaborators, License, userName, email) => {
-    let content = 
-    `# ${title}
-    
-    ## Description
-    ${motivation}
-    ${rationale}
-    ${solution}
-    ${learn}
+let content = 
+`# ${title}
 
-    ## Table of Contents
-    * [Installation] (#Installation)
-    * [Usage](#Usage)
-    * [Credits](#Credits)
-    * [License](#License)
+<a href="https://img.shields.io/badge/License-${License}-brightgreen"><img src="https://img.shields.io/badge/License-${License}-brightgreen"></a>
 
-    ## Installation
-    ${installStep1}
-    ${installStep2}
-    ${installStep3}
-    ${installStep4}
+## Description
+${motivation}
+${rationale}
+${solution}
+${learn}
 
-    ## Usage
-    ${usage}
+## Table of Contents
+* [Installation](#Installation)
+* [Usage](#Usage)
+* [Credits](#Credits)
+* [License](#License)
 
-    ## Credits
-    ${collaborators}
+## Installation
+${installStep1}
+${installStep2}
+${installStep3}
+${installStep4}
 
-    ## License
-    ${License}
+## Usage
+${usage}
 
-    ##Questions
-    If you want to checkout my work, visit my <a href="https://github.com/${userName}>Github</a>.
-    I will use your email: <a href="mailto:${email}">${email}</a> to follow up with additional questions that you may have.
-    `;
+## Credits
+${collaborators}
+
+## License
+${License}
+
+## Questions
+If you want to checkout my work, visit my Github account: https://github.com/${userName} or <br>
+email me with any questions you might have: ${email}.
+`;
 return content;
 }
